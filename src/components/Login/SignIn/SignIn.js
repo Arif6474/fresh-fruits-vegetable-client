@@ -1,23 +1,41 @@
 import React from "react";
 import { Form } from "react-bootstrap";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./SignIn.css";
 
 const SignIn = () => {
   const navigate = useNavigate()
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
   const navigateSignUp = () => {
     navigate('/register')
+  }
+  const handleLogin = event => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    signInWithEmailAndPassword(email, password);
+
+  }
+  if(user){
+    navigate('/')
   }
   return (
     <div className=" w-50 mx-auto mt-4 login-form">
       <h2 className="text-center mx-auto title my-4">Login</h2>
-      <Form>
+      <Form onSubmit={handleLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control type="email"  name= "email" placeholder="Enter email" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control type="password" name="password" placeholder="Password" />
         </Form.Group>
 
         <button className="  w-100 my-2 login-btn" type="submit">

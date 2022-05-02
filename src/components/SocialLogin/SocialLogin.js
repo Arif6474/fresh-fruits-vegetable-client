@@ -2,8 +2,19 @@ import React from 'react';
 import './SocialLogin.css'
 import google from '../../../src/images/google.png'
 import github from '../../../src/images/github.png'
+import auth from '../../firebase.init';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
+    const navigate = useNavigate();
+
+    if(user || user2){
+        navigate('/')
+    }
+
     return (
         <div>
             <div className="d-flex align-items-center">
@@ -12,10 +23,10 @@ const SocialLogin = () => {
                 <div style = {{height: '1px'}} className="w-50 bg-dark"></div>
             </div>
             <div className="mt-2">
-                <button className="social-btn btn-primary p-1 w-100"><img style={{height: '20px'}} className="rounded-circle me-2" src={google} alt="" /> Google Sign In</button>
+                <button className="social-btn btn-primary p-1 w-100" onClick={() => signInWithGoogle()}><img style={{height: '20px'}} className="rounded-circle me-2" src={google} alt="" /> Google Sign In</button>
             </div>
             <div className="my-3">
-                <button className="social-btn btn-dark p-1 w-100"><img style={{height: '20px'}}  className="rounded-circle me-2"  src={github} alt="" /> Github Sign In</button>
+                <button className="social-btn btn-dark p-1 w-100" onClick={() => signInWithGithub()}><img style={{height: '20px'}}  className="rounded-circle me-2"  src={github} alt="" /> Github Sign In</button>
             </div>
         </div>
     );

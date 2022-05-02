@@ -1,26 +1,47 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import SocialLogin from '../../SocialLogin/SocialLogin';
+import auth from '../../../firebase.init';
+
 
 const SignUp = () => {
     const navigate = useNavigate()
-
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+  
     const navigateSignIn= () => {
         navigate('/login')
+    }
+    if(user){
+        navigate('/')
+    }
+    const handleRegister = event => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(name, email, password);
+        createUserWithEmailAndPassword(email, password)
     }
     return (
         <div className=" w-50 mx-auto mt-4 login-form">
         <h2 className="text-center mx-auto title my-4">Register</h2>
-        <Form>
+        <Form onSubmit={handleRegister}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="Your name" />
+            <Form.Control type="text" name="name" placeholder="Your name"  required/>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control type="email" placeholder="Your email" />
+            <Form.Control type="email" name="email" placeholder="Your email" required />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" name="password" placeholder="Password"  required/>
           </Form.Group>
   
           <button className="  w-100 my-2 login-btn" type="submit">
