@@ -1,0 +1,31 @@
+.login-form{
+    padding: 10px;
+    border: 1px solid rgb(222, 220, 220);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.new-user{
+    color: rgb(143, 134, 134);
+    
+}
+
+.title{
+    color: rgb(29, 9, 4);
+    font-weight: 500;
+    opacity: .8;
+}
+
+.login-btn{
+    background-color: rgb(230, 32, 55);
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    border: none;
+}
+
+.login-btn:hover{
+    background-color: rgb(227, 5, 31);
+    
+}

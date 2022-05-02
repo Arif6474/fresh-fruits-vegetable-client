@@ -6,6 +6,7 @@ import Blogs from './components/Blogs/Blogs';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Inventory from './components/Inventory/Inventory';
 import SignIn from './components/Login/SignIn/SignIn';
 import SignUp from './components/Login/SignUp/SignUp';
 import NotFound from './components/NotFound/NotFound';
@@ -21,7 +22,7 @@ function App() {
          <Route path="/login" element={<SignIn></SignIn>}></Route>
          <Route path="/register" element={<SignUp></SignUp>}></Route>
          <Route path="/blogs" element={<Blogs></Blogs>}></Route>
-         <Route path="/home" element={<Home></Home>}></Route>
+         <Route path="/inventory" element={<Inventory></Inventory>}></Route>
          <Route path="/home" element={<Home></Home>}></Route>
          <Route path="/home" element={<Home></Home>}></Route>
          <Route path="*" element={<NotFound></NotFound>}></Route>
