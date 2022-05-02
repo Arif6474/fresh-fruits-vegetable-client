@@ -3,7 +3,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    return (
+    return ( <div >
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
         <Navbar.Brand as={Link} to="/">Fresh Fruits & Vegetables</Navbar.Brand>
@@ -23,6 +23,7 @@ const Header = () => {
         </Navbar.Collapse>
         </Container>
       </Navbar>
+      </div>
     );
 };
 
