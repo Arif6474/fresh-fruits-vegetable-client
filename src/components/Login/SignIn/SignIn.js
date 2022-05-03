@@ -3,6 +3,7 @@ import { Form } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import Loading from "../../Loading/Loading";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./SignIn.css";
 
@@ -14,6 +15,14 @@ const SignIn = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+  let errorMessage;
+      if (error) {  
+          errorMessage = <p className="text-center text-danger">Error: {error?.message}</p>
+
+        }
+  if(loading){
+    return <Loading></Loading>
+  }
   const navigateSignUp = () => {
     navigate('/register')
   }
@@ -37,7 +46,7 @@ const SignIn = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control type="password" name="password" placeholder="Password" />
         </Form.Group>
-
+        {errorMessage}
         <button className="  w-100 my-2 login-btn" type="submit">
          Login
         </button>
