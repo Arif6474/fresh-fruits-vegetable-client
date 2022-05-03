@@ -20,12 +20,9 @@ const SignUp = () => {
         return <Loading></Loading>
       }
       let errorMessage;
-      if (error) {
-         
-            
+      if (error) {  
           errorMessage = <p className="text-center text-danger">Error: {error?.message}</p>
-                    
-          
+
         }
     const navigateSignIn= () => {
         navigate('/login')

@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./SignIn.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
   const navigate = useNavigate()
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  const emailRef = useRef('')
+  const passwordRef = useRef('')
+  const handleResetPassword = async () => {
+    const email = emailRef.current.value;
+    if(email){
+      await sendPasswordResetEmail(email);
+    toast('Your password has been reset.Check email');
+    }else{
+      toast('Please enter a valid email')
+    }
+  }
   const [
     signInWithEmailAndPassword,
     user,
@@ -20,17 +34,18 @@ const SignIn = () => {
           errorMessage = <p className="text-center text-danger">Error: {error?.message}</p>
 
         }
-  if(loading){
+  if(loading || sending){
     return <Loading></Loading>
   }
   const navigateSignUp = () => {
     navigate('/register')
   }
-  const handleLogin = event => {
+  
+  const handleLogin = async(event) => {
     event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    signInWithEmailAndPassword(email, password);
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    await signInWithEmailAndPassword(email, password);
 
   }
   if(user){
@@ -41,10 +56,10 @@ const SignIn = () => {
       <h2 className="text-center mx-auto title my-4">Login</h2>
       <Form onSubmit={handleLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control type="email"  name= "email" placeholder="Enter email" />
+          <Form.Control type="email" ref={emailRef}  placeholder="Enter email" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control type="password" name="password" placeholder="Password" />
+          <Form.Control ref={passwordRef} type="password"  placeholder="Password" />
         </Form.Group>
         {errorMessage}
         <button className="  w-100 my-2 login-btn" type="submit">
@@ -58,10 +73,11 @@ const SignIn = () => {
         </p>
         <p className="new-user">
           Are you forget password?
-          <span className="text-info ps-2">Reset password</span>
+          <span onClick={handleResetPassword} className="text-info ps-2">Reset password</span>
         </p>
       </div>
       <SocialLogin></SocialLogin>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
