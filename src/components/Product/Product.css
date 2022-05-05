@@ -4,8 +4,13 @@
     margin: 20px;
     border-radius: 5px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    height: 480px;
+    height: 560px;
 
+}
+.product-image{
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
 }
 .product-image img{
    width: 100%; 
