@@ -5,6 +5,7 @@ import './App.css';
 import Banner from './components/Banner/Banner';
 import Blogs from './components/Blogs/Blogs';
 import Footer from './components/Footer/Footer';
+import FruitDetails from './components/FruitDetails/FruitDetails';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Inventory from './components/Inventory/Inventory';
@@ -12,6 +13,8 @@ import SignIn from './components/Login/SignIn/SignIn';
 import SignUp from './components/Login/SignUp/SignUp';
 import NotFound from './components/NotFound/NotFound';
 import Product from './components/Product/Product';
+import RequireAuth from './components/RequireAuth/RequireAuth';
+import Update from './components/Update/Update';
 
 function App() {
   return (
@@ -25,8 +28,17 @@ function App() {
          <Route path="/register" element={<SignUp></SignUp>}></Route>
          <Route path="/blogs" element={<Blogs></Blogs>}></Route>
          <Route path="/fruits" element={<Inventory></Inventory>}></Route>
+         <Route path="/fruits/:fruitId" element={
+           <RequireAuth>
+             <FruitDetails></FruitDetails>
+           </RequireAuth>
+         }></Route>
          <Route path="/product" element={<Product></Product>}></Route>
-         <Route path="/home" element={<Home></Home>}></Route>
+         <Route path="/update" element={
+           <RequireAuth> 
+             <Update></Update>
+           </RequireAuth>
+         }></Route>
          <Route path="*" element={<NotFound></NotFound>}></Route>
 
        </Routes>

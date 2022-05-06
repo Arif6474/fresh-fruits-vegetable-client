@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Form } from "react-bootstrap";
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
@@ -10,7 +10,10 @@ import "./SignIn.css";
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
+
   const navigate = useNavigate()
+  let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
   const emailRef = useRef('')
   const passwordRef = useRef('')
@@ -49,8 +52,8 @@ const SignIn = () => {
 
   }
   if(user){
-    navigate('/')
-  }
+    navigate(from, { replace: true });
+   }
   return (
     <div className=" w-50 mx-auto mt-4 login-form">
       <h2 className="text-center mx-auto title my-4">Login</h2>
