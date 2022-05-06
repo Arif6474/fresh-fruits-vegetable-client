@@ -6,11 +6,15 @@
     
 }
 
-.products-title{
-    
-    text-align: center;
-    margin-top: 20px;
-    color: rgb(5, 43, 49);
-   
- 
+
+.fruits-title{
+    border-bottom: 3px solid #ff3705;
+    width: 130px;
+    margin: 20px auto;
+}
+
+@media only screen and (max-width:576px){
+    .products-container{
+        grid-template-columns:repeat(1 ,1fr);
+    }
 }

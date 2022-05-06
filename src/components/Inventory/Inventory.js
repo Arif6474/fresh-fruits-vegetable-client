@@ -8,10 +8,10 @@ const Inventory = () => {
     return (
         
         <div>
-            <h2 className=" products-title"> All Fruits</h2>
+            <h2 className=" fruits-title"> All Fruits</h2>
             <div className="products-container">
               {
-                products.map(product => <Product product={product}></Product> )
+                products.map(product => <Product key={product._id} product={product}></Product> )
               }
             </div>
         </div>

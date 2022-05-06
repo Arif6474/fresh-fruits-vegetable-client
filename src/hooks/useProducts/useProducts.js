@@ -3,7 +3,7 @@ const { useState, useEffect } = require("react")
 const useProducts = () => {
     const [products , setProducts] = useState([])
     useEffect(() => {
-        fetch('products.json')
+        fetch('https://stormy-plateau-24083.herokuapp.com/fruit')
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])

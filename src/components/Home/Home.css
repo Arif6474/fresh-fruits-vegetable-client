@@ -10,6 +10,24 @@
 
 }
 
+@media only screen and (max-width:576px){
+    .products-btn{
+        background-color: black;
+        width: 170px;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        text-decoration: none;
+        margin-left: 120px; 
+    
+    
+    }
+}
+.products-title {
+    border-bottom: 3px solid #ff3705;
+    width: 80px;
+    margin: 20px auto;
+}
 .products-btn:hover{
     color: white;
     background-color:  rgb(215, 47, 17);

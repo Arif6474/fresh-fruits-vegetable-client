@@ -18,7 +18,7 @@ const Product = ({product}) => {
            
            </div>
            
-           <button className="update-btn w-75">Update</button>
+           <button className="update-btn w-75">Stock Update</button>
            
 
         </div>
