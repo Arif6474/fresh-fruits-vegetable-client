@@ -2,6 +2,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import AskQuestion from './components/AskQuestion/AskQuestion';
 import Banner from './components/Banner/Banner';
 import Blogs from './components/Blogs/Blogs';
 import Footer from './components/Footer/Footer';
@@ -34,6 +35,7 @@ function App() {
            </RequireAuth>
          }></Route>
          <Route path="/product" element={<Product></Product>}></Route>
+         <Route path="/ask" element={<AskQuestion></AskQuestion>}></Route>
          <Route path="/update" element={
            <RequireAuth> 
              <Update></Update>

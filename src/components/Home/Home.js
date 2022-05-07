@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts/useProducts';
+import AskQuestion from '../AskQuestion/AskQuestion';
 import Banner from '../Banner/Banner';
 import Product from '../Product/Product';
 import './Home.css'
@@ -20,6 +21,7 @@ const Home = () => {
             </div>
             <Link className= "products-btn" to="/fruits">More Fruits</Link>
         </div>
+        <AskQuestion></AskQuestion>
         </div>
     );
 };

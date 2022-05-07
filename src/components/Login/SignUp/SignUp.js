@@ -15,7 +15,7 @@ const SignUp = () => {
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth , {sendEmailVerification: true});
       if(loading){
         return <Loading></Loading>
       }
