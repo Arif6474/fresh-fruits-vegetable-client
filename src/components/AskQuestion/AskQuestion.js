@@ -3,6 +3,7 @@ import { Accordion } from 'react-bootstrap';
 
 const AskQuestion = () => {
     return ( <div className="mt-4">
+        <h2>People also ask:</h2>
         <Accordion defaultActiveKey="0">
   <Accordion.Item eventKey="0">
     <Accordion.Header>What are the benefits of eating fruits and vegetables?</Accordion.Header>
