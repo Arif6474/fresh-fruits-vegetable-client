@@ -20,7 +20,7 @@ const Home = () => {
                 products.slice(0, 6).map(product => <Product key={product._id} product={product}></Product> )
               }
             </div>
-            <Link className= "products-btn" to="/fruits">More Fruits</Link>
+            <Link className= "products-btn" to="/inventory">More Fruits</Link>
         </div>
         <AboutUs></AboutUs>
         <AskQuestion></AskQuestion>

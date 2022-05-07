@@ -13,6 +13,7 @@ import Home from './components/Home/Home';
 import Inventory from './components/Inventory/Inventory';
 import SignIn from './components/Login/SignIn/SignIn';
 import SignUp from './components/Login/SignUp/SignUp';
+import ManageInventory from './components/ManageInventory/ManageInventory';
 import NotFound from './components/NotFound/NotFound';
 import Product from './components/Product/Product';
 import RequireAuth from './components/RequireAuth/RequireAuth';
@@ -30,6 +31,11 @@ function App() {
          <Route path="/register" element={<SignUp></SignUp>}></Route>
          <Route path="/blogs" element={<Blogs></Blogs>}></Route>
          <Route path="/fruits" element={<Inventory></Inventory>}></Route>
+         <Route path="/inventory" element={
+           <RequireAuth>
+             <ManageInventory></ManageInventory>
+           </RequireAuth>
+         }></Route>
          <Route path="/fruits/:fruitId" element={
            <RequireAuth>
              <FruitDetails></FruitDetails>
