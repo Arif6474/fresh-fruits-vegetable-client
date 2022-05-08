@@ -8,7 +8,7 @@ const FruitDetails = () => {
     const [fruit , setFruit] = useState({});
     const {name , image, description, quantity , supplier, price } = fruit;
     
-   let stock = parseInt(fruit?.quantity)
+   let oldQuantity = parseInt(fruit?.quantity)
 
 
 useEffect(() => {
@@ -16,25 +16,25 @@ useEffect(() => {
     fetch(url)
     .then(res => res.json())
     .then(data => setFruit(data))
-}, [])
+}, [fruitId, fruit])
  
  // decrease quantity
 
  const handleDeliveredQuantity = () => {
-      stock = stock - 1  
-
+      const newQuantity = oldQuantity - 1;  
+      const dQuantity = {newQuantity}
       const url = `http://localhost:5000/fruit/${fruitId}`
       fetch(url ,{
         method: 'PUT',
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(stock)
+        body: JSON.stringify(dQuantity)
     })
     .then(res => res.json())
     .then(data => {
         console.log(data);
-      //   setQuantity(data)
+      
        
        
     })
@@ -45,13 +45,13 @@ useEffect(() => {
   const handleQuantity = (event) => {
     event.preventDefault();
     const addQuantity = parseInt(event.target.quantity.value);
-    const newQuantity = parseInt(stock + addQuantity);
+    const newQuantity = parseInt(oldQuantity + addQuantity);
     const fruitQuantity = {newQuantity}
     console.log(fruitQuantity);
 
      // update quantity
      const url = `http://localhost:5000/fruit/${fruitId}`
-    fetch(url ,{
+    fetch(url,{
       method: 'PUT',
       headers: {
           'content-type': 'application/json'
@@ -62,7 +62,7 @@ useEffect(() => {
   .then(data => {
       console.log(data);
     //   setQuantity(data)
-      alert('successfully sent')
+      alert('Do you want to update quantity?')
       event.target.reset();
   })
   }
