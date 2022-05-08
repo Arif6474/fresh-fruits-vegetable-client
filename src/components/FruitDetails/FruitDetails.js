@@ -6,7 +6,7 @@ import './FruitDetails.css'
 const FruitDetails = () => {
     const {fruitId} = useParams();
     const [fruit , setFruit] = useState({});
-    const {name , image, description, quantity , supplier, price } = fruit;
+    const {_id, name , image, description, quantity , supplier, price } = fruit;
     
    let oldQuantity = parseInt(fruit?.quantity)
 
@@ -47,7 +47,7 @@ useEffect(() => {
     const addQuantity = parseInt(event.target.quantity.value);
     const newQuantity = parseInt(oldQuantity + addQuantity);
     const fruitQuantity = {newQuantity}
-    console.log(fruitQuantity);
+    
 
      // update quantity
      const url = `https://stormy-plateau-24083.herokuapp.com/fruit/${fruitId}`
@@ -73,6 +73,7 @@ useEffect(() => {
         </div>
        <div className="product-details">
        <p className="product-name"> {name}</p>
+       <p className="product-description">Id : {_id}</p>
         <p className="product-price">Price: {price}</p>
         <p className="product-quantity">Quantity: {quantity} Kg</p>
         <p className="product-supplier">Supplier: {supplier}</p>

@@ -31,6 +31,7 @@ const Header = () => {
             user?.email ? <>
              <Nav.Link as={Link} to="/inventory">Manage Inventories</Nav.Link>
              <Nav.Link as={Link} to="/add-inventory">Add Item</Nav.Link>
+             <Nav.Link as={Link} to="/myitem">My Item</Nav.Link>
             <button onClick={handleLogout} className="logout-btn">Logout</button> </> : 
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
           }

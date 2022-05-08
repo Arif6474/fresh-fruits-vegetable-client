@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 const AddInventory = () => {
     const { register, handleSubmit } = useForm();
   const onSubmit = data => {
-    console.log(data)
+   
     const url = `https://stormy-plateau-24083.herokuapp.com/fruit`
     fetch(url,{
         method: 'POST',
