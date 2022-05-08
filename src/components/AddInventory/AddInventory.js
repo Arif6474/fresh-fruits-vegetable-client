@@ -4,7 +4,7 @@ const AddInventory = () => {
     const { register, handleSubmit } = useForm();
   const onSubmit = data => {
     console.log(data)
-    const url = `http://localhost:5000/fruit`
+    const url = `https://stormy-plateau-24083.herokuapp.com/fruit`
     fetch(url,{
         method: 'POST',
         headers: {'content-type' : 'application/json'},

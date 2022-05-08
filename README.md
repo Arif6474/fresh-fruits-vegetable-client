@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Fresh Fruits & Vegetables
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -9,7 +9,23 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [https://fresh-fruits-vegetables.web.app/](https://fresh-fruits-vegetables.web.app/) to view it in your browser.
+
+# Short description
+ Fresh Fruits & Vegetables has developed a comprehensive product range and extensive network to become a global leader in the supply of fresh produce.
+
+## Features and Functionalities
+- React route
+- React spinner
+- authentication(email/password,google, github)
+- React toast
+- Email verification
+- React hook form
+- Mongodb
+- Heroku
+- React bootstrap
+
+
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

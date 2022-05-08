@@ -7,15 +7,15 @@ const ManageInventory = () => {
     const [products, setProducts] = useProducts([])
 
     const handleDelete = id => {
-        const proceed = window.confirm('Are you sure you want to delete?')
+        const proceed = window.confirm('Do you want to delete?')
         if(proceed) {
-            const url = `http://localhost:5000/fruit/${id}`
+            const url = `https://stormy-plateau-24083.herokuapp.com/fruit/${id}`
      fetch(url, {
          method: 'DELETE',
 
      }).then(res => res.json())
      .then(data => {
-         console.log(data);
+        
          const remaining = products.filter(product => product._id !== id);
          setProducts(remaining)
      })

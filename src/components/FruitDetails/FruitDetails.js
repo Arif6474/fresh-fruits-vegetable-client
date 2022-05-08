@@ -12,7 +12,7 @@ const FruitDetails = () => {
 
 
 useEffect(() => {
-    const url = `http://localhost:5000/fruit/${fruitId}`;
+    const url = `https://stormy-plateau-24083.herokuapp.com/fruit/${fruitId}`;
     fetch(url)
     .then(res => res.json())
     .then(data => setFruit(data))
@@ -23,7 +23,7 @@ useEffect(() => {
  const handleDeliveredQuantity = () => {
       const newQuantity = oldQuantity - 1;  
       const dQuantity = {newQuantity}
-      const url = `http://localhost:5000/fruit/${fruitId}`
+      const url = `https://stormy-plateau-24083.herokuapp.com/fruit/${fruitId}`
       fetch(url ,{
         method: 'PUT',
         headers: {
@@ -50,7 +50,7 @@ useEffect(() => {
     console.log(fruitQuantity);
 
      // update quantity
-     const url = `http://localhost:5000/fruit/${fruitId}`
+     const url = `https://stormy-plateau-24083.herokuapp.com/fruit/${fruitId}`
     fetch(url,{
       method: 'PUT',
       headers: {
