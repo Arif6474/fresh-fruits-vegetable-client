@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
 import AboutUs from './components/AboutUs/AboutUs';
+import AddInventory from './components/AddInventory/AddInventory';
 import AskQuestion from './components/AskQuestion/AskQuestion';
 import Banner from './components/Banner/Banner';
 import Blogs from './components/Blogs/Blogs';
@@ -31,6 +32,11 @@ function App() {
          <Route path="/register" element={<SignUp></SignUp>}></Route>
          <Route path="/blogs" element={<Blogs></Blogs>}></Route>
          <Route path="/fruits" element={<Inventory></Inventory>}></Route>
+         <Route path="/add-inventory" element={
+           <RequireAuth>
+             <AddInventory></AddInventory>
+           </RequireAuth>
+         }></Route>
          <Route path="/inventory" element={
            <RequireAuth>
              <ManageInventory></ManageInventory>

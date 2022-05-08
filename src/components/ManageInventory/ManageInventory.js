@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts/useProducts';
 import './ManageInventory.css'
 
@@ -42,13 +43,14 @@ const ManageInventory = () => {
        
        </div>
        
-       <button onClick={() =>handleDelete(product._id)} className="update-btn w-75">Delete</button>
+       <button onClick={() =>handleDelete(product._id)} className="delete-btn w-50">Delete</button>
        
 
     </div>
             </div> )
           }
         </div>
+        <Link className= "products-btn" to="/add-inventory">Add new inventory</Link>
     </div>
     );
 };
