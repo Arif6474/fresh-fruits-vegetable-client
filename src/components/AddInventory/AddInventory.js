@@ -1,6 +1,9 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import auth from '../../firebase.init';
 const AddInventory = () => {
+    const [user] = useAuthState(auth)
     const { register, handleSubmit } = useForm();
   const onSubmit = data => {
    
@@ -18,6 +21,7 @@ const AddInventory = () => {
         <div className="w-50 mx-auto ">
             <h3 className="text-center">Add new inventory</h3>
             <form className="d-flex flex-column"  onSubmit={handleSubmit(onSubmit)}>
+      <input  className="mb-2 " placeholder="Email" value={user.email} readonly {...register("email")} />
       <input  className="mb-2 " placeholder="Name" {...register("name")} />
       <input  className="mb-2 " placeholder="Supplier" {...register("supplier")} />
       <textarea className="mb-2 " placeholder="Description" {...register("description")} />
